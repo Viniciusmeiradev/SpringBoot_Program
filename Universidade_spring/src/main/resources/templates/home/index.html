@@ -14,26 +14,7 @@
         <script src="/webjars/jquery/3.7.1/jquery.min.js"></script>
         <script src="/webjars/bootstrap/5.3.8/js/bootstrap.bundle.min.js"></script>
 
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3333FF">
-                <a class="navbar-brand" th:href="@{/}">
-                    <img src="img/logoUni.png" class="ms-4" alt="Logo" width="80px"/>
-                </a>
-
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                
-                <div id="navMobile" class="navbar-collapse collapse justify-content-end">
-                    <a class="btn-nav nav-item nav-link me-3"><i class="fas fa-home"></i> Inicio </a>
-                    <a class="btn-nav nav-item nav-link me-3"><i class="fas fa-user-graduate"></i> Cursos </a>
-                    <a class="btn-nav nav-item nav-link me-3"><i class="fas fa-wallet"></i> Financeiro </a>
-                    <a class="btn-nav nav-item nav-link me-3"><i class="fas fa-headset"></i> Atendimento </a>
-                    <a class="btn-nav nav-item nav-link me-3"><i class="fas fa-book-reader"></i> Biblioteca </a>
-                    <a class="btn-nav nav-item nav-link me-3 "><i class="fas fa-times"></i> Sair</a>
-                </div>
-            </nav>
-        </header>
+        <div th:replace="fragments :: cabecalho"></div>
 
         <section class="neo-section" style="background-image:url('img/img_fundo.jpg');">
             <div class="sombra"></div>
@@ -55,10 +36,7 @@
             </div>
         </section>
 
-        <footer>
-            <div class="rodape">
-                <span> Todos os direitos reservados - 2026 &copy; Vinicius Meira</span>
-            </div>
-        </footer>
+        <div th:replace="fragments :: rodape"></div>
+       
     </body>
 </html>

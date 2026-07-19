@@ -8,7 +8,7 @@ public enum Curso {
     CONTABILIDADE("Contabilidade"),
     FISICA("Fisica");
     
-    private String Curso;
+    private String curso;
 
     private Curso(String curso){
         this.curso = curso;

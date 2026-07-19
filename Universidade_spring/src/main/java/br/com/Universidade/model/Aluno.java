@@ -1,12 +1,15 @@
 package br.com.Universidade.model;
 import br.com.Universidade.Enums.Curso;
 import br.com.Universidade.Enums.Status;
+import br.com.Universidade.Enums.Turno;
 
-import javax.persistence.column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.EnumType;
 
 @Entity
 public class Aluno {
@@ -15,20 +18,23 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @column(name = "nome")
+    @Column(name = "nome")
     private String nome;
 
-    @column(name = "curso")
+    @Column(name = "curso")
+    @Enumerated(EnumType.STRING)
     private Curso curso;
 
-    @column(name = "matricula")
+    @Column(name = "matricula")
     private String matricula;
 
-    @column(name = "status")
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
     private Status status;
 
-    @column(name = turno)
-    private String turno;
+    @Column(name = "turno")
+    @Enumerated(EnumType.STRING)
+    private Turno turno;
 
 
 
@@ -67,10 +73,10 @@ public class Aluno {
         this.status = status;
     }
 
-    public String getTurno(){
+    public Turno getTurno(){
         return turno;
     }
-    public void setTurno(String turno){
+    public void setTurno(Turno turno){
         this.turno = turno;
     }
 }

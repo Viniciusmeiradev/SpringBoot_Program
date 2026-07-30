@@ -74,4 +74,39 @@ public class AlunoController {
         mv.setViewName("filtroAlunos");
         return mv;
     }
+
+
+    @GetMapping("alunos-ativos")
+    public ModelAndView listaAlunosAtivos(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("alunos-ativos");
+        mv.addObject("alunosAtivos", alunorepositorio.findByStatusAtivos());
+        return mv;
+    }
+
+
+    @GetMapping("alunos-inativos")
+    public ModelAndView listaAlunosInativos(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("alunos-inativos");
+        mv.addObject("alunosInativos", alunorepositorio.findByStatusInativo());
+        return mv;
+    }
+
+    @GetMapping("alunos-cancelados")
+    public ModelAndView listaAlunosCancelados(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("alunos-cancelados");
+        mv.addObject("alunosCancelados", alunorepositorio.findByStatusCancelado());
+        return mv;
+    }
+
+    @GetMapping("alunos-trancados")
+    public ModelAndView listaAlunosTrancados(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("alunos-trancados");
+        mv.addObject("alunosTrancados", alunorepositorio.findByStatusTrancados());
+        return mv;
+    }
 }
+

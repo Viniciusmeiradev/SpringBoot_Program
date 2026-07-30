@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import jakarta.validation.Valid;
 import br.com.Universidade.model.Aluno;
 import br.com.Universidade.dao.AlunoDao;
 
@@ -24,10 +25,15 @@ public class AlunoController {
     }
 
     @PostMapping("InsertAlunos")
-    public ModelAndView inserirAluno(Aluno aluno){
+    public ModelAndView inserirAluno(@Valid Aluno aluno, BindingResult br){
         ModelAndView mv= new ModelAndView();
-        mv.setViewName("redirect:/alunos-adicionados");
-        alunorepositorio.save(aluno);
+        if(br.hasError()){
+            mv.setViewName("formAluno");
+            mv.addObject("aluno");
+        }else{
+            mv.setViewName("redirect:/alunos-adicionados");
+            alunorepositorio.save(aluno);
+        }
         return mv;
     }
 
@@ -60,5 +66,12 @@ public class AlunoController {
     public String excluirAluno(@PathVariable("id") Integer id){
         alunorepositorio.deleteById(id);
         return "redirect:/alunos-adicionados";
+    }
+
+    @GetMapping("filtro-alunos")
+    public ModelAndView filtroAlunos(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("filtroAlunos");
+        return mv;
     }
 }

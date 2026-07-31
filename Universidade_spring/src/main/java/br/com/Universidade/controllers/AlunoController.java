@@ -108,5 +108,19 @@ public class AlunoController {
         mv.addObject("alunosTrancados", alunorepositorio.findByStatusTrancados());
         return mv;
     }
+
+    @PostMapping("pesquisar-aluno")
+    public ModelAndView pesquisarAluno(@RequestParam(required = false) String nome){
+        ModelAndView mv = new ModelAndView();
+        List<Aluno>listaAlunos;
+        if (nome == null || nome.trim().isEmpty()){
+            listaAlunos = alunorepositorio.findAll();
+        }else{
+            listaAlunos = alunorepositorio.findByNomeContainingIgnoreCase(nome);
+        } 
+        mv.addObject("ListaDeAlunos", listaAlunos);
+        mv.setViewName("pesquisa-resultado");
+        return mv;
+    }
 }
 

@@ -7,11 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController{
 
-    @GetMapping("/")
+    @GetMapping("index")
     public ModelAndView index(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("home/index");
-        mv.addObject("msg", "Mensagem do controler");
+        mv.addObject("aluno", new Aluno());
         return mv;
     }
 }   

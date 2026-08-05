@@ -31,7 +31,9 @@
                     <a data-toggle="modal" data-target="#modalPesquisa" class="btn-nav nav-item nav-link me-3"><i class="fas fa-wallet"></i> Pesquisar </a>
                     <a class="btn-nav nav-item nav-link me-3"><i class="fas fa-headset"></i> Atendimento </a>
                     <a class="btn-nav nav-item nav-link me-3"><i class="fas fa-book-reader"></i> Biblioteca </a>
-                    <a class="btn-nav nav-item nav-link me-3 "><i class="fas fa-times"></i> Sair</a>
+                    <form action="/logout" method="post">
+                        <button type="submit" class="btn-nav nav-item nav-link me-3 "><i class="fas fa-times"></i> Sair</button>
+                    </form>
                 </div>
             </nav>
         </header>

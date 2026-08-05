@@ -4,5 +4,5 @@ public class CriptoExistException extends Exception{
     public CriptoExistException(String message){
         super(message);
     }
-    private static final long SerialVersionUID=1L;
+    private static final long serialVersionUID=1L;
 }

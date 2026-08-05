@@ -14,14 +14,19 @@ public class ServiceUsuario{
 
     public void salvarUsuario(Usuario user) throws Exception{
         try{
-            if(usuarioRepositorio.findByEmail() != null){
+            if(usuarioRepositorio.findByEmail(user.getEmail()) != null){
                 throw new EmailExistsException("Já existe um email cadastrado para: " + user.getEmail());
             }
             user.setSenha(Util.md5(user.getSenha());)
-        }catch (Exception e){
+        }catch (NoSuchAlgorithmException e){
             throw new CriptoExistException("Erro na criptografia da senha.");
         }
 
         usuarioRepositorio.save(user);
+    }
+
+    public Usuario loginUser(String user, String senha) throws ServiceExceptio{
+        Usuario userLogin = usuarioRepositorio.buscarLogin(user, senha);
+        return userLogin;
     }
 }

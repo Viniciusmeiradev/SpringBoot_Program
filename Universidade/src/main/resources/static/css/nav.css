@@ -68,7 +68,7 @@ a.btn-nav:hover{
 }
 
 /*sair*/
-.btn{
+.btn-home{
     width: 280px;
     color: #fff;
     border-radius: 10px;
@@ -93,8 +93,13 @@ a.btn-nav:hover{
     font-size: 1.25em;
 }
 
+.wm a{
+    text-decoration: none; 
+    padding: 25px 30px;
+}
 
 /*Responsividade*/
+
 @media screen and (max-width: 667px){
     .wm{
         width: 100%;
@@ -106,4 +111,15 @@ a.btn-nav:hover{
     .neo-container{
         margin-top: 120px;
     }
+    .botoes{
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width: 767px){
+    .botoes{margin-left: 10; padding: 2% 15%;}
+}
+
+@media screen and (min-width: 1050px){
+    .botoes{padding: 2% 21%; margin-left: 50px;}
 }

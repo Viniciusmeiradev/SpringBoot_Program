@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, inicial-scale=1.0">
 
         <link rel="stylesheet" href="/webjars/bootstrap/5.3.8/css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/nav.css">
+        <link rel="stylesheet" href="/css/nav.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
         <title> Inserir Alunos</title>
@@ -22,6 +22,9 @@
             <form method="post" action="/InsertAlunos" th:objetc="${aluno}">
                 <div class="row">
                     <div class="col-md-5 form-group offset-md-3">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nome')}">
+                            <label class="validation-message" th:errors="*{nome}"></label>
+                        </div>
                         <label>Nome do Aluno</label>
                         <input class="form-control" placeholder="Ex: Carlos Sanches" th:field="*{nome}">
                     </div>
@@ -29,6 +32,9 @@
 
                 <did class="row">
                     <div class="col-md-5 form-group offset-md-3">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('curso')}">
+                            <label class="validation-message" th:errors="*{curso}"></label>
+                        </div>
                         <label>Selecione o Curso</label>
                         <select class="form-control" th:field="*{curso}">
                             <option th:each="curso : ${T(br.com.Universidade.Enums.Curso).values()}" th:value="${curso}" th:text="${curso}"></option>
@@ -38,6 +44,9 @@
 
                 <div class="row">
                     <div class="col-md-5 form-group offset-md-3">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('matricula')}">
+                            <label class="validation-message" th:errors="*{matricula}"></label>
+                        </div>
                         <label>Gerar Matricula</label>
                         <input class="form-control" id="matricula" th:field="*{matricula}"> 
                         <button type="button" onclick="GerarMatricula();" class="btn btn-dark" style="margin-top:10px;">Gerar</button>
@@ -46,6 +55,9 @@
 
                 <div class="row">
                     <div class="col-md-5 form-group offset-md-3">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('status')}">
+                            <label class="validation-message" th:errors="*{status}"></label>
+                        </div>
                         <label>Selecione o Status</label>
                         <select class="form-control" th:field="*{status}">
                             <option th:each="status : ${T(br.com.Universidade.Enums.Status).values()}" th:value="${status}" th:text="${status}"></option>
@@ -55,6 +67,9 @@
 
                 <div class="row">
                     <div class="col-md-5 form-group offset-md-3">
+                        <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('turno')}">
+                            <label class="validation-message" th:errors="*{turno}"></label>
+                        </div>
                         <label>Selecione seu Turno</label>
                         <select class="form-control" th:field="*{turno}">
                             <option th:each="turno : ${T(br.com.Universidade.Enums.Turno).values()}" th:value="${turno}" th:text="${status}"></option>
@@ -65,7 +80,7 @@
                 <div class="row">
                     <button type="submit" class="btn btn-success offset-md-5">SALVAR</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="btn btn-outline-danger">VOLTAR</a>
+                    <a th:href="@{index}" class="btn btn-outline-danger">VOLTAR</a>
                 </div>
             </form>
         </div>
